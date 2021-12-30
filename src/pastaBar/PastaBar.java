@@ -24,7 +24,11 @@ public class PastaBar {
 	}
 
 	public static boolean isRegularCustomer(String[] phoneNumbers, String phone) {
-
+		for (int i = 0; i < phoneNumbers.length; i++) {
+			if (phoneNumbers[i].equals(phone)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
