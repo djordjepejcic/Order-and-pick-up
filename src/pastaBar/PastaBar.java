@@ -16,30 +16,21 @@ public class PastaBar {
 
 		int[] prices = { 50, 60, 120, 120, 140, 100, 100, 100, 80, 50, 80, 80, 80, 50, 50, 20 };
 
-		boolean stopOrdering = false;
 		double sumPrices = 0;
 
 		System.out.println("Izvolite!! :-)");
 
-		while (!stopOrdering) {
+		System.out.print("Izaberite sastojak za pastu: ");
+		String ingredientName = s.nextLine();
 
-			System.out.print("Izaberite sastojak za pastu: ");
-			String ingredientName = s.nextLine();
+		while (!ingredientName.equalsIgnoreCase("Poruci")) {
 
 			int ingredientIndex = findIngredient(ingredients, ingredientName);
 
-			if (ingredientName.equalsIgnoreCase("Poruci")) {
+			System.out.print("Izaberite sastojak za pastu: ");
+			ingredientName = s.nextLine();
 
-				stopOrdering = true;
-
-				System.out.print("Unesite broj telefona: ");
-				String phone = s.next();
-
-				if (isRegularCustomer(phoneNumbers, phone)) {
-					sumPrices = sumPrices * 0.9;
-				}
-
-			} else if (ingredientIndex > -1) {
+			if (ingredientIndex > -1) {
 
 				sumPrices = sumPrices + prices[ingredientIndex];
 
@@ -47,6 +38,13 @@ public class PastaBar {
 				System.out.println("Pogresan unos. Molimo Vas, unesite ispravan naziv sastojaka. :-)");
 			}
 
+		}
+
+		System.out.print("Unesite broj telefona: ");
+		String phone = s.next();
+
+		if (isRegularCustomer(phoneNumbers, phone)) {
+			sumPrices = sumPrices * 0.9;
 		}
 
 		String currency = " dinara.";
